@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  SHIPPING_COSTS = 100
+  
   def create
     if purchase_params[:gateway] == "paypal"
       cart_id = purchase_params[:cart_id]
@@ -35,8 +37,8 @@ class PurchasesController < ApplicationController
               order: order,
               sale: item.sale,
               unit_price_cents: item.sale.unit_price_cents,
-              shipping_costs_cents: shipping_costs,
-              paid_price_cents: item.sale.unit_price_cents + shipping_costs
+              shipping_costs_cents: SHIPPING_COSTS,
+              paid_price_cents: item.sale.unit_price_cents + SHIPPING_COSTS
             )
           end
         end
@@ -86,8 +88,8 @@ class PurchasesController < ApplicationController
               order: order,
               sale: item.sale,
               unit_price_cents: item.sale.unit_price_cents,
-              shipping_costs_cents: shipping_costs,
-              paid_price_cents: item.sale.unit_price_cents + shipping_costs
+              shipping_costs_cents: SHIPPING_COSTS,
+              paid_price_cents: item.sale.unit_price_cents + SHIPPING_COSTS
             )
           end
         end
@@ -120,9 +122,5 @@ class PurchasesController < ApplicationController
 
   def address_params
     purchase_params[:address] || {}
-  end
-
-  def shipping_costs
-    100
   end
 end
