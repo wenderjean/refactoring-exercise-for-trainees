@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def create
-    if purchase_params[:gateway] == 'paypal'
+    if purchase_params[:gateway] == "paypal"
       cart_id = purchase_params[:cart_id]
 
       cart = Cart.find_by(id: cart_id)
