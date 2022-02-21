@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
@@ -10,8 +12,12 @@ RSpec.describe Order, type: :model do
     context 'when there are items' do
       let(:sale1) { build_stubbed(:sale, unit_price_cents: 100) }
       let(:sale2) { build_stubbed(:sale, unit_price_cents: 100) }
-      let(:item1) { build_stubbed(:order_line_item, sale: sale1, unit_price_cents: sale1.unit_price_cents, paid_price_cents: 1) }
-      let(:item2) { build_stubbed(:order_line_item, sale: sale2, unit_price_cents: sale2.unit_price_cents, paid_price_cents: 1) }
+      let(:item1) do
+        build_stubbed(:order_line_item, sale: sale1, unit_price_cents: sale1.unit_price_cents, paid_price_cents: 1)
+      end
+      let(:item2) do
+        build_stubbed(:order_line_item, sale: sale2, unit_price_cents: sale2.unit_price_cents, paid_price_cents: 1)
+      end
 
       let(:order) { build_stubbed(:order) }
 
@@ -39,8 +45,12 @@ RSpec.describe Order, type: :model do
     context 'when there are items' do
       let(:sale1) { build_stubbed(:sale, unit_price_cents: 100) }
       let(:sale2) { build_stubbed(:sale, unit_price_cents: 100) }
-      let(:item1) { build_stubbed(:order_line_item, sale: sale1, unit_price_cents: 1, paid_price_cents: sale1.unit_price_cents) }
-      let(:item2) { build_stubbed(:order_line_item, sale: sale2, unit_price_cents: 1, paid_price_cents: sale2.unit_price_cents) }
+      let(:item1) do
+        build_stubbed(:order_line_item, sale: sale1, unit_price_cents: 1, paid_price_cents: sale1.unit_price_cents)
+      end
+      let(:item2) do
+        build_stubbed(:order_line_item, sale: sale2, unit_price_cents: 1, paid_price_cents: sale2.unit_price_cents)
+      end
 
       let(:order) { build_stubbed(:order) }
 

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Purchases', type: :request do
   include Requests
 
-  describe "POST /create" do
+  describe 'POST /create' do
     subject(:request!) { post '/purchases', params: params }
 
     shared_examples 'using logged in user present into the cart' do
